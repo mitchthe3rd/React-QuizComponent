@@ -33,8 +33,12 @@ class QuizQuestion extends Component {
                 </section>
                 <section className="buttons">
                     <ul>
-                        <QuizQuestionButton button_text={this.props.quiz_question.answer_options[0]}/>
-//                        <li>{this.props.quiz_question.answer_options[0]}</li>
+                        {
+                            this.props.quiz_question.answer_options.map((answer_options, index) => {
+                                return <QuizQuestionButton key={index} button_text={answer_options} clickHandler={this.handleClick.bind(this)} />
+                            })
+                        }
+
                     </ul>
                 </section>
                 {this.state.incorrectAnswer ? <p className="error">Sorry, that's not right</p> : null}
